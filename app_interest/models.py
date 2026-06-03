@@ -1,7 +1,9 @@
 from django.db import models
 
-# Create your models here.
-class simple_interest(models.Model):
-     principal=models.IntegerField(max_length=100)
-     rate=models.FloatField(max_length=50)
-     time=models.IntegerField(max_length=50)
+class SimpleInterest(models.Model):
+    principal = models.IntegerField()
+    rate = models.FloatField()
+    time = models.IntegerField()
+
+    def __str__(self):
+        return str(self.principal)

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from app_interest.models import SimpleInterest
 
 def home(request):
      result='Nono'
@@ -25,6 +26,12 @@ def home(request):
           print(rate)
           print(time)
           print(total)
+          obj = SimpleInterest(
+            principal=principal,
+            rate=rate,
+            time=time
+        )
+          obj.save()
           
 
      return render(request,"home.html",data)
