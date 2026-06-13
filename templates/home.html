@@ -1,118 +1,126 @@
-{% load static  %}
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Interest Calculator</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Interest Calculator</title>
 
-{% comment %} <link rel="stylesheet" href="{% static 'home.css' %}"> {% endcomment %}
-<style>
-    *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
-}
+    {% comment %}
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+    {% endcomment %}
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
 
-body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
-}
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+      }
 
-.container{
-    width:350px;
-    background:#fff;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
+      .container {
+        width: 350px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
 
-h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#333;
-}
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-.input-group{
-    margin-bottom:15px;
-}
+      .input-group {
+        margin-bottom: 15px;
+      }
 
-label{
-    display:block;
-    margin-bottom:5px;
-    font-weight:bold;
-}
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
 
-input{
-    width:100%;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    outline:none;
-}
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+      }
 
-button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#4facfe;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        background: #4facfe;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-button:hover{
-    background:#3399ff;
-}
+      button:hover {
+        background: #3399ff;
+      }
 
-.result{
-    margin-top:20px;
-    text-align:center;
-    font-size:18px;
-    font-weight:bold;
-    color:#222;
-}
-</style>
-</head>
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #222;
+      }
+    </style>
+  </head>
 
-<body>  
+  <body>
+    <form method="POST">
+      {% csrf_token %}
 
-<form method="POST">
- {% csrf_token %}
+      <div class="container">
+        <h2>Interest Calculator</h2>
 
-<div class="container">
-    <h2>Interest Calculator</h2>
+        <div class="input-group">
+          <label>Principal Amount (₹)</label>
+          <input type="number" name="principal" placeholder="Enter principal" />
+        </div>
 
-    <div class="input-group">
-        <label>Principal Amount (₹)</label>
-        <input type="number" name="principal" placeholder="Enter principal">
-    </div>
+        <div class="input-group">
+          <label>Rate of Interest (%)</label>
+          <input
+            type="number"
+            name="rate"
+            step="any"
+            placeholder="Enter rate"
+          />
+        </div>
 
-    <div class="input-group">
-        <label>Rate of Interest (%)</label>
-        <input type="number" name="rate" placeholder="Enter rate">
-    </div>
+        <div class="input-group">
+          <label>Time (Years)</label>
+          <input
+            type="number"
+            name="time"
+            step="any"
+            placeholder="Enter time"
+          />
+        </div>
 
-    <div class="input-group">
-        <label>Time (Years)</label>
-        <input type="number" name="time" placeholder="Enter time">
-    </div>
+        <button type="submit">Calculate</button>
 
-    <button type="submit">Calculate</button>
-
-    <div class="result">
-        <h4>Interest Amount:{{result}}</h4>
-        <h4> Total Amount: {{total}}</h4>
-
-    </div>
-</div>
-
-</form>
-
-</body>
+        <div class="result">
+          <h4>Interest Amount:{{result}}</h4>
+          <h4>Total Amount: {{total}}</h4>
+        </div>
+      </div>
+    </form>
+  </body>
 </html>

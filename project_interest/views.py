@@ -9,27 +9,22 @@ def home(request):
     
      
      if request.POST:
-          principal = request.POST.get('principal') or 0
-          rate = request.POST.get('rate') or 0
-          time = request.POST.get('time') or 0
+          principal = int(request.POST.get('principal') )
+          rate = float(request.POST.get('rate') )
+          time = float(request.POST.get('time') )
 
           principal = int(principal)
           rate = float(rate)
-          time = int(time)
+          time = float(time)
 
           result = (principal * rate * time) / 100
           total = principal + result
-          print(principal)
-
-
+          
           data={
                'result':result,
                'total':total
           }
-          print(principal)
-          print(rate)
-          print(time)
-          print(total)
+        
           obj = SimpleInterest(
             principal=principal,
             rate=rate,
