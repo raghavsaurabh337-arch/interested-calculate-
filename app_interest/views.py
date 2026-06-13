@@ -19,7 +19,7 @@ def home(request):
                'masg':'django python fremworks',
                'method':'you called POST Methos',
           })
-     elif request.methos=='PATCH':
+     elif request.method=='PATCH':
              return Response({
                "status":200,
                'rate':300,

@@ -9,12 +9,16 @@ def home(request):
     
      
      if request.POST:
-          principal=int(request.POST.get('principal',0))
-          rate=float(request.POST.get('rate',0))
-          time=int(request.POST.get('time',0))
+          principal = request.POST.get('principal') or 0
+          rate = request.POST.get('rate') or 0
+          time = request.POST.get('time') or 0
 
-          result=(principal*rate*time)/100
-          total=principal+result
+          principal = int(principal)
+          rate = float(rate)
+          time = int(time)
+
+          result = (principal * rate * time) / 100
+          total = principal + result
           print(principal)
 
 
